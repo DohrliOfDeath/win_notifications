@@ -22,8 +22,8 @@ namespace NotificationDaemon
             Body = body;
         }
         bool WasShown { get; set; }
-        string Head { get; set; }
-        string Body { get; set; }
+        public string Head { get; set; }
+        public string Body { get; set; }
         public override string ToString()
         {
             return WasShown + "|  " + Head + ": " + Body;
@@ -36,17 +36,14 @@ namespace NotificationDaemon
         {
             Settings.pythonLocation = @"C:\Program Files\Python39\python.exe"; //if I set this path immediately in Settings, an ? gets written before the path
 
-            //LaunchGetNotifications();
+            //LaunchGetNotifications(); //listens for all current notifications and writes them into the cache file
 
             //read file for new notification
             string[] fileList = File.ReadAllLines(Settings.notificationCacheFileLocation);
-            Console.WriteLine(fileList.Length);
-            for(int i = 0; i< fileList.Length/2; i+=2)
-            {
+            for(int i = 0; i< fileList.Length/2; i+=2) //write into notifications array
                 notifications.Add(new Notification(fileList[i], fileList[i+1]));
-            }
-            Console.WriteLine(notifications[0].ToString());
-            LaunchNotification(fileList);
+
+            LaunchNotification();
             
             Console.ReadKey(true);
         }
@@ -63,12 +60,12 @@ namespace NotificationDaemon
             getNotifications.WaitForExit();
             Console.WriteLine("finished getting notifications\n\n");
         }
-        private static void LaunchNotification(string[] list)
+        private static void LaunchNotification()
         {
-            if (list.Length >= 2) //if file is empty
+            if (notifications.Count > 0) //if file is empty
             {
                 Process script = Process.Start(Settings.pythonLocation,
-                    Settings.pyqtScriptLocation + " 5 \"" + list[0] + "\" \"" + list[1] + "\"");
+                    Settings.pyqtScriptLocation + " 5 \"" + notifications[0].Head + "\" \"" + notifications[0].Body + "\"");
                 script.WaitForExit();
             }
         }
