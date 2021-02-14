@@ -49,16 +49,20 @@ namespace GetNotifications
                     // We'll treat all subsequent text elements as body text,
                     // joining them together via newlines.
                     string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text));
-                    Console.WriteLine("head: " + titleText);
+                    Console.WriteLine("\nhead: " + titleText);
                     Console.WriteLine("body: " + bodyText);
                     
                     combined.Add(titleText);
                     combined.Add(bodyText);
                 }
             }
-            
-            Console.WriteLine("Written to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
+            if (combined.Count > 2)
+                throw new NotImplementedException("for now, only one new message is able to be displayed");
+            Console.WriteLine("\nWritten to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
             await File.WriteAllLinesAsync(Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt", combined);
+
+            //clears windows messages | throws an AggregateException, I have no idea why, nothing from google, too
+            //listener.ClearNotifications();
             Environment.Exit(0);
         }
     }
