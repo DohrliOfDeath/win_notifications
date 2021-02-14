@@ -1,0 +1,13 @@
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\bin\Debug\netcoreapp3.1\NotificationDaemon.exe
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\bin\Debug\netcoreapp3.1\NotificationDaemon.deps.json
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\bin\Debug\netcoreapp3.1\NotificationDaemon.runtimeconfig.json
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\bin\Debug\netcoreapp3.1\NotificationDaemon.runtimeconfig.dev.json
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\bin\Debug\netcoreapp3.1\NotificationDaemon.dll
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\bin\Debug\netcoreapp3.1\NotificationDaemon.pdb
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.csprojAssemblyReference.cache
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.AssemblyInfoInputs.cache
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.AssemblyInfo.cs
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.csproj.CoreCompileInputs.cache
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.dll
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.pdb
+C:\Users\Michi\source\repos\win_notifications\NotificationDaemon\obj\Debug\netcoreapp3.1\NotificationDaemon.genruntimeconfig.cache

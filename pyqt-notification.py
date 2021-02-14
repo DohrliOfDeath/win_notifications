@@ -35,18 +35,24 @@ class Window(QMainWindow):
         threading.Thread(target=self.waitForExit, args=(), kwargs={}).start()
 
     def mouseMoveEvent(self, e):
-        sys.exit()
+        print("detected mouse movement, closing now")
+        self.close()
+        os._exit(1)
         #self.label_2.setText(str(e.x()) + "   "  + str(e.y()))
 
     def waitForExit(self):
         time.sleep(int(sys.argv[1]))
+        print("waited 5 seconds, closing now")
         self.close()
         os._exit(1)
 
  
 if len(sys.argv) != 4:
-    sys.exit(print("wrong argv count"))
+    sys.exit(print("wrong argv count\n" + "expected 3 arguments, got " + str(len(sys.argv))))
 
-App = QApplication(sys.argv) 
-window = Window() 
-sys.exit(App.exec()) 
+try:
+    App = QApplication(sys.argv) 
+    window = Window() 
+    sys.exit(App.exec()) 
+except:
+   print(sys.exc_info()[0])

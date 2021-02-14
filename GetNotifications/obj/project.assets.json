@@ -228,6 +228,16 @@
         "runtime": {
           "lib/netcoreapp2.0/_._": {}
         }
+      },
+      "NotificationDaemon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/NotificationDaemon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NotificationDaemon.dll": {}
+        }
       }
     }
   },
@@ -781,11 +791,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "NotificationDaemon/1.0.0": {
+      "type": "project",
+      "path": "../NotificationDaemon/NotificationDaemon.csproj",
+      "msbuildProject": "../NotificationDaemon/NotificationDaemon.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.Toolkit.Uwp.Notifications >= 6.1.1"
+      "Microsoft.Toolkit.Uwp.Notifications >= 6.1.1",
+      "NotificationDaemon >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -814,7 +830,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Michi\\source\\repos\\win_notifications\\NotificationDaemon\\NotificationDaemon.csproj": {
+              "projectPath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\NotificationDaemon\\NotificationDaemon.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -55,7 +55,8 @@ namespace GetNotifications
                     combined.Add(titleText);
                     combined.Add(bodyText);
                 }
-            }            
+            }
+            
             Debug.WriteLine("Written to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
             await File.WriteAllLinesAsync(Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt", combined);
             Environment.Exit(0);

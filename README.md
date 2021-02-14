@@ -13,3 +13,4 @@ Reads all current Notifications, and writes them to $HOME/.notificationsCache.tx
 
 ## TODO
 * write daemon, which regularly checks for new notifications and calls the python script
+* daemon: extend global settings
