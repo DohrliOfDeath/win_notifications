@@ -1,0 +1,2 @@
+Microsoft Defender Antivirus did not find any threats since your last summary. Your device was scanned 6 times.
+Windows Defender summary
