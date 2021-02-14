@@ -49,15 +49,15 @@ namespace GetNotifications
                     // We'll treat all subsequent text elements as body text,
                     // joining them together via newlines.
                     string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text));
-                    Console.WriteLine("\nhead: " + titleText);
-                    Console.WriteLine("body: " + bodyText);
+                    //Console.WriteLine("\nhead: " + titleText);
+                    //Console.WriteLine("body: " + bodyText);
                     
                     combined.Add(titleText);
                     combined.Add(bodyText);
                 }
             }
-            if (combined.Count > 2)
-                throw new NotImplementedException("for now, only one new message is able to be displayed");
+            //if (combined.Count > 2)
+            //    throw new NotImplementedException("for now, only one new message is able to be displayed");
             Console.WriteLine("\nWritten to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
             await File.WriteAllLinesAsync(Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt", combined);
 

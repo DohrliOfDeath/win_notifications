@@ -20,18 +20,19 @@ class Window(QMainWindow):
         #self.setWindowOpacity(0.8)
         self.setWindowOpacity(1.0)
 
-        self.move(QDesktopWidget().availableGeometry().width() - self.geometry().width(), 0)
-        self.label_1 = QLabel(sys.argv[2], self) 
+        self.move(QDesktopWidget().availableGeometry().width() - self.geometry().width(), 0 + int(sys.argv[1]))
+        self.label_1 = QLabel(sys.argv[3], self) 
         self.label_1.resize(300, 12)
         self.label_1.move(7, 5) 
         self.label_1.setFont(QFont('Arial', 12)) 
 
-        self.label_2 = QLabel(sys.argv[3], self) 
+        self.label_2 = QLabel(sys.argv[4], self) 
         self.label_2.resize(300, 20)
         self.label_2.move(7, 20) 
         self.label_2.setFont(QFont('Arial', 9)) 
 
         self.show()
+        time.sleep(1)
         threading.Thread(target=self.waitForExit, args=(), kwargs={}).start()
 
     def mouseMoveEvent(self, e):
@@ -41,14 +42,14 @@ class Window(QMainWindow):
         #self.label_2.setText(str(e.x()) + "   "  + str(e.y()))
 
     def waitForExit(self):
-        time.sleep(int(sys.argv[1]))
+        time.sleep(int(sys.argv[2]))
         print("waited 5 seconds, closing now")
         self.close()
         os._exit(1)
 
  
-if len(sys.argv) != 4:
-    sys.exit(print("wrong argv count\n" + "expected 3 arguments, got " + str(len(sys.argv))))
+if len(sys.argv) != 5:
+    sys.exit(print("wrong argv count\n" + "expected 4 arguments, got " + str(len(sys.argv))))
 
 try:
     App = QApplication(sys.argv) 

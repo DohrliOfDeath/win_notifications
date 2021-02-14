@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 static class Settings
 {
@@ -21,12 +22,25 @@ namespace NotificationDaemon
             Head = head;
             Body = body;
         }
-        bool WasShown { get; set; }
-        public string Head { get; set; }
-        public string Body { get; set; }
+        public bool WasShown { get; set; }
+
+        string _head;
+        string _body;
+        public string Head { get 
+            {
+                return _head;
+            }
+            set { _head = value; } }
+        public string Body { 
+            get
+            {
+                return _body; 
+            } 
+            set { _body = value; } }
+
         public override string ToString()
         {
-            return WasShown + "|  " + Head + ": " + Body;
+            return WasShown + " |  " + Head + ": " + Body;
         }
     }
     class Program
@@ -36,16 +50,21 @@ namespace NotificationDaemon
         {
             Settings.pythonLocation = @"C:\Program Files\Python39\python.exe"; //if I set this path immediately in Settings, an ? gets written before the path
 
-            //LaunchGetNotifications(); //listens for all current notifications and writes them into the cache file
+            while (true)
+            {
+                LaunchGetNotifications(); //listens for all current notifications and writes them into the cache file
+                ReadFromFile();
 
-            //read file for new notification
-            string[] fileList = File.ReadAllLines(Settings.notificationCacheFileLocation);
-            for(int i = 0; i< fileList.Length/2; i+=2) //write into notifications array
-                notifications.Add(new Notification(fileList[i], fileList[i+1]));
-
-            LaunchNotification();
-            
-            Console.ReadKey(true);
+                int offsetY = -55;
+                for (int i = 0; i < notifications.Count; i++)
+                {
+                    Console.WriteLine(notifications[i]);
+                    if (!notifications[i].WasShown)
+                        LaunchNotification(i, offsetY+=55);
+                    notifications[i].WasShown = true;
+                }
+                Thread.Sleep(5000);
+            }
         }
         private static void LaunchGetNotifications()
         {
@@ -53,20 +72,48 @@ namespace NotificationDaemon
             Console.WriteLine("starting: " + Settings.getNotificationsEXELocation);
             ProcessStartInfo start = new ProcessStartInfo(Settings.getNotificationsEXELocation);
             start.RedirectStandardOutput = true;
+            start.RedirectStandardError = true;
             start.UseShellExecute = false;
-            Process getNotifications = Process.Start(start);
+            start.CreateNoWindow = true;
+            Process getNotifications = new Process();
+            getNotifications.StartInfo = start;
+            getNotifications.EnableRaisingEvents = true;
+            getNotifications.Start();
             using (StreamReader sr = getNotifications.StandardOutput)
                 Console.WriteLine(sr.ReadToEnd());
             getNotifications.WaitForExit();
             Console.WriteLine("finished getting notifications\n\n");
         }
-        private static void LaunchNotification()
+        private static void LaunchNotification(int number, int offset)
         {
-            if (notifications.Count > 0) //if file is empty
+            if (notifications.Count > 0) //if notifications is empty
             {
-                Process script = Process.Start(Settings.pythonLocation,
-                    Settings.pyqtScriptLocation + " 5 \"" + notifications[0].Head + "\" \"" + notifications[0].Body + "\"");
-                script.WaitForExit();
+                ProcessStartInfo start = new ProcessStartInfo(Settings.pythonLocation,
+                    Settings.pyqtScriptLocation + " " + offset + " 5 \"" + notifications[number].Head + "\" \"" + notifications[number].Body + "\"");
+                start.RedirectStandardOutput = true;
+                start.RedirectStandardError = true;
+                start.UseShellExecute = false;
+                start.CreateNoWindow = true;
+                Process script = new Process();
+                script.StartInfo = start;
+                script.EnableRaisingEvents = true;
+                script.Start();
+                //script.WaitForExit();
+            }
+        }
+        private static void ReadFromFile()
+        {
+            //read file for new notification
+            string[] fileList = File.ReadAllLines(Settings.notificationCacheFileLocation);
+            for (int i = 0; i < fileList.Length; i += 2) //write into notifications array
+            {
+                bool isAlreadyInNotifications = false;
+                foreach (var notif in notifications)
+                    if (notif.Head == fileList[i] && notif.Body == fileList[i + 1])
+                        isAlreadyInNotifications = true;
+
+                if (!isAlreadyInNotifications)
+                    notifications.Add(new Notification(fileList[i], fileList[i + 1]));
             }
         }
     }
