@@ -1,1 +1,0 @@
-C:\Users\Michi\source\repos\win_notifications\getWindowsMessages\getWindowsMessages\getWindowsMessages.csproj;x86

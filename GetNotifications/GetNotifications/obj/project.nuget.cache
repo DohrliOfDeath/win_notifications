@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "1N61ztp7R3fOxCypIJWTAtthVGIrQ8k5a01aYPuWbch+iLOReW2dxPW30HihcgakXFUn0GgF+m4j6GzGU3F0Iw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications\\GetNotifications.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Michi\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\microsoft.toolkit.uwp.notifications\\6.1.1\\microsoft.toolkit.uwp.notifications.6.1.1.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.17763.1000\\microsoft.windows.sdk.contracts.10.0.17763.1000.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0\\system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\system.runtime.windowsruntime.ui.xaml\\4.6.0\\system.runtime.windowsruntime.ui.xaml.4.6.0.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\Michi\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
