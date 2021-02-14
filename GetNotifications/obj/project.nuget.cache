@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1N61ztp7R3fOxCypIJWTAtthVGIrQ8k5a01aYPuWbch+iLOReW2dxPW30HihcgakXFUn0GgF+m4j6GzGU3F0Iw==",
+  "dgSpecHash": "nSnccBd/odNAfqSZ7fFa6++kx1/scQI8Ch4YMeFoECtL44j9lOQaGYguYrTHdsgPVBZw7Rq9jERuQb1+yYcwPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications\\GetNotifications.csproj",
+  "projectFilePath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Michi\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Michi\\.nuget\\packages\\microsoft.toolkit.uwp.notifications\\6.1.1\\microsoft.toolkit.uwp.notifications.6.1.1.nupkg.sha512",

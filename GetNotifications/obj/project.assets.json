@@ -794,11 +794,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications\\GetNotifications.csproj",
+      "projectUniqueName": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications.csproj",
       "projectName": "GetNotifications",
-      "projectPath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications\\GetNotifications.csproj",
+      "projectPath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications.csproj",
       "packagesPath": "C:\\Users\\Michi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\GetNotifications\\obj\\",
+      "outputPath": "C:\\Users\\Michi\\source\\repos\\win_notifications\\GetNotifications\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Michi\\AppData\\Roaming\\NuGet\\NuGet.Config",
