@@ -23,13 +23,13 @@ namespace GetNotifications
             switch (accessStatus)
             {
                 case UserNotificationListenerAccessStatus.Allowed:
-                    Debug.WriteLine("notifications allowed");
+                    Console.WriteLine("notifications allowed");
                     break;
                 case UserNotificationListenerAccessStatus.Denied:
-                    Debug.WriteLine("notifications denied");
+                    Console.WriteLine("notifications denied");
                     break;
                 case UserNotificationListenerAccessStatus.Unspecified:
-                    Debug.WriteLine("notifications something else");
+                    Console.WriteLine("notifications something else");
                     break;
             }
             IReadOnlyList<UserNotification> notifs = await listener.GetNotificationsAsync(NotificationKinds.Toast);
@@ -49,15 +49,15 @@ namespace GetNotifications
                     // We'll treat all subsequent text elements as body text,
                     // joining them together via newlines.
                     string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text));
-                    Debug.WriteLine("head: " + titleText);
-                    Debug.WriteLine("body: " + bodyText);
+                    Console.WriteLine("head: " + titleText);
+                    Console.WriteLine("body: " + bodyText);
                     
                     combined.Add(titleText);
                     combined.Add(bodyText);
                 }
             }
             
-            Debug.WriteLine("Written to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
+            Console.WriteLine("Written to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
             await File.WriteAllLinesAsync(Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt", combined);
             Environment.Exit(0);
         }
