@@ -46,6 +46,8 @@ namespace NotificationDaemon
     class Program
     {
         static List<Notification> notifications = new List<Notification>();
+        static List<Process> openNotifications = new List<Process>();
+
         static void Main(string[] args)
         {
             Settings.pythonLocation = @"C:\Program Files\Python39\python.exe"; //if I set this path immediately in Settings, an ? gets written before the path
@@ -55,12 +57,16 @@ namespace NotificationDaemon
                 LaunchGetNotifications(); //listens for all current notifications and writes them into the cache file
                 ReadFromFile();
 
-                int offsetY = -65;
+                for (int i = 0; i < openNotifications.Count; i++)
+                    if (openNotifications[i].HasExited)
+                        openNotifications.Remove(openNotifications[i]);
+
+                int offsetY = 65;
                 for (int i = 0; i < notifications.Count; i++)
                 {
                     Console.WriteLine(notifications[i]);
                     if (!notifications[i].WasShown)
-                        LaunchNotification(i, offsetY+=65);
+                        LaunchNotification(i, offsetY);
                     notifications[i].WasShown = true;
                 }
                 Thread.Sleep(2000);
@@ -89,15 +95,15 @@ namespace NotificationDaemon
             if (notifications.Count > 0) //if notifications is empty
             {
                 ProcessStartInfo start = new ProcessStartInfo(Settings.pythonLocation,
-                    Settings.pyqtScriptLocation + " " + offset + " 5 \"" + notifications[number].Head + "\" \"" + notifications[number].Body + "\"");
+                    Settings.pyqtScriptLocation + " " + offset * openNotifications.Count + " 5 \"" + notifications[number].Head + "\" \"" + notifications[number].Body + "\"");
                 start.RedirectStandardOutput = true;
                 start.RedirectStandardError = true;
                 start.UseShellExecute = false;
                 start.CreateNoWindow = true;
-                Process script = new Process();
-                script.StartInfo = start;
-                script.EnableRaisingEvents = true;
-                script.Start();
+                openNotifications.Add(new Process());
+                openNotifications[openNotifications.Count - 1].StartInfo = start;
+                openNotifications[openNotifications.Count - 1].EnableRaisingEvents = true;
+                openNotifications[openNotifications.Count - 1].Start();
                 //script.WaitForExit();
             }
         }

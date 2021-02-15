@@ -33,6 +33,7 @@ class Window(QMainWindow):
         self.label_2.resize(290, 40)
         self.label_2.move(7, 25) 
         self.label_2.setFont(QFont('Arial', 9)) 
+        self.label_2.setWordWrap(True)
 
         self.show()
         time.sleep(1)
