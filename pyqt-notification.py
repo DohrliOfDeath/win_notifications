@@ -10,7 +10,7 @@ import os
 class Window(QMainWindow): 
     def __init__(self): 
         super().__init__() 
-        self.setFixedSize(300, 50)
+        self.setFixedSize(300, 60)
         self.setMouseTracking(True)
         self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
         self.setWindowFlag(Qt.FramelessWindowHint)
@@ -22,13 +22,16 @@ class Window(QMainWindow):
 
         self.move(QDesktopWidget().availableGeometry().width() - self.geometry().width(), 0 + int(sys.argv[1]))
         self.label_1 = QLabel(sys.argv[3], self) 
-        self.label_1.resize(300, 12)
-        self.label_1.move(7, 5) 
+        self.label_1.setAlignment(Qt.AlignTop);
+        self.label_1.resize(290, 20)
+        self.label_1.move(7, 5)
         self.label_1.setFont(QFont('Arial', 12)) 
 
+        # body:
         self.label_2 = QLabel(sys.argv[4], self) 
-        self.label_2.resize(300, 20)
-        self.label_2.move(7, 20) 
+        self.label_2.setAlignment(Qt.AlignTop);
+        self.label_2.resize(290, 40)
+        self.label_2.move(7, 25) 
         self.label_2.setFont(QFont('Arial', 9)) 
 
         self.show()

@@ -55,15 +55,15 @@ namespace NotificationDaemon
                 LaunchGetNotifications(); //listens for all current notifications and writes them into the cache file
                 ReadFromFile();
 
-                int offsetY = -55;
+                int offsetY = -65;
                 for (int i = 0; i < notifications.Count; i++)
                 {
                     Console.WriteLine(notifications[i]);
                     if (!notifications[i].WasShown)
-                        LaunchNotification(i, offsetY+=55);
+                        LaunchNotification(i, offsetY+=65);
                     notifications[i].WasShown = true;
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
             }
         }
         private static void LaunchGetNotifications()
@@ -105,7 +105,7 @@ namespace NotificationDaemon
         {
             //read file for new notification
             string[] fileList = File.ReadAllLines(Settings.notificationCacheFileLocation);
-            for (int i = 0; i < fileList.Length; i += 2) //write into notifications array
+            for (int i = 0; i < fileList.Length - 1; i += 2) //write into notifications array
             {
                 bool isAlreadyInNotifications = false;
                 foreach (var notif in notifications)
