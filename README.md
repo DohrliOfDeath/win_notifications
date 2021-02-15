@@ -10,7 +10,3 @@ python pyqt-notification.py 5 "Notification Head" "Notification Body"
 
 ## GetNotifications
 Reads all current Notifications, and writes them to $HOME/.notificationsCache.txt
-
-## TODO
-* write daemon, which regularly checks for new notifications and calls the python script
-* daemon: extend global settings

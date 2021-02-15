@@ -56,10 +56,9 @@ namespace GetNotifications
                     combined.Add(bodyText);
                 }
             }
-            //if (combined.Count > 2)
-            //    throw new NotImplementedException("for now, only one new message is able to be displayed");
-            Console.WriteLine("\nWritten to: " + Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt");
-            await File.WriteAllLinesAsync(Environment.GetEnvironmentVariable("USERPROFILE") + "\\.notificationCache.txt", combined);
+            
+            Console.WriteLine("\nWritten to: " + Settings.notificationCacheFileLocation);
+            await File.WriteAllLinesAsync(Settings.notificationCacheFileLocation, combined);
 
             //clears windows messages | throws an AggregateException, I have no idea why, nothing from google, too
             //listener.ClearNotifications();
