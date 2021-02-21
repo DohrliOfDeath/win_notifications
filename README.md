@@ -2,6 +2,9 @@
 ## Dependencies
 * PyQt5
 
+## TODOs
+* Write an installer
+
 ## Usage pyqt5-notification.py
 For having the message displayed for 5 seconds:  
 ```sh
